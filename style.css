@@ -1,6 +1,6 @@
 body {
-  background-color: gold;
-  color: black;
+  background-color: black;
+  color: gold;
   font-family: Arial, sans-serif;
   text-align: center;
 }
@@ -8,4 +8,5 @@ body {
 h1 {
   font-size: 2.5em;
   margin-top: 50px;
+
 }
