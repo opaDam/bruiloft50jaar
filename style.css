@@ -1,0 +1,11 @@
+body {
+  background-color: gold;
+  color: black;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-top: 50px;
+}
