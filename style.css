@@ -1,7 +1,14 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #9a7e1e;
   color: gold;
   font-family: Arial, sans-serif;
   text-align: center;
-
 }
+
