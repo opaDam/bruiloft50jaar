@@ -32,10 +32,11 @@ button a {
   transition: background-color 0.3s, color 0.3s;
 
   &:hover {
-    background-color: #9a7e1e;
-    color: gold;
+   background-color: #948247;
+    color: rgb(255, 227, 69);
   }
 }
+
 
 
 
