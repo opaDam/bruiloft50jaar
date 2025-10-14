@@ -19,7 +19,7 @@ img {
   border-radius: 10px;
 }
 
-button a {
+button {
   display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
@@ -36,6 +36,7 @@ button a {
     color: rgb(255, 227, 69);
   }
 }
+
 
 
 
