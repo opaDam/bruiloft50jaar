@@ -20,10 +20,21 @@ img {
 }
 
 button a {
-background-color: #9a7e1e;
-  color: gold;
-  font-family: Arial, sans-serif;
-  text-align: center;
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: gold;
+  color: #9a7e1e;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: #9a7e1e;
+    color: gold;
+  }
 }
+
 
 
