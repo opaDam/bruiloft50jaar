@@ -19,4 +19,10 @@ img {
   border-radius: 10px;
 }
 
+button {
+background-color: #9a7e1e;
+  color: gold;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
