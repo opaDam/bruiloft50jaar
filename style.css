@@ -17,6 +17,34 @@ body {
       margin-bottom: 20px;
     }
 
+ /* 🎛️ Knoppenstijl */
+  .controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+
+  .btn {
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease;
+  }
+
+  .btn:hover {
+    background: #007bff;
+    transform: translateY(-2px);
+  }
+
+  .btn:active {
+    transform: translateY(0);
+  }
+
+
     ul {
       list-style: none;
       padding: 0;
@@ -40,6 +68,10 @@ body {
     li.active {
       background: #007bff;
     }
+.btn {
+
+}
+
 
 
 
