@@ -16,5 +16,10 @@ const videoPlayer = document.getElementById('videoPlayer');
         videoSource.src = src;
         videoPlayer.load();
         videoPlayer.play();
+
+              // Scroll soepel naar de videoplayer
+    videoPlayer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
       });
     });
+
