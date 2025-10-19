@@ -18,8 +18,9 @@ const videoPlayer = document.getElementById('videoPlayer');
         videoPlayer.play();
 
               // Scroll soepel naar de videoplayer
-    videoPlayer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    videoPlayer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         
       });
     });
+
 
