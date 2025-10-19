@@ -18,10 +18,11 @@ const videoPlayer = document.getElementById('videoPlayer');
         videoPlayer.play();
 
               // Scroll soepel naar de videoplayer
-    videoPlayer.scrollIntoView({ top: videoPlayer.offsetTop + 350, behavior: 'smooth', block: 'start' });
+    videoPlayer.scrollIntoView({ behavior: 'smooth' , top: videoPlayer.offsetTop + 350});
         
       });
     });
+
 
 
 
