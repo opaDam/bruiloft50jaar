@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tab Image Gallery Pro+</title>
+<style>
+  :root {
+    --bg-color: #111;
+    --text-color: #fff;
+    --tab-bg: #222;
+    --tab-hover: #333;
+    --accent: #0078ff;
+    --overlay-bg: rgba(0, 0, 0, 0.9);
+  }
+
+  body.light {
+    --bg-color: #f5f5f5;
+    --text-color: #111;
+    --tab-bg: #ddd;
+    --tab-hover: #ccc;
+    --accent: #0078ff;
+    --overlay-bg: rgba(255, 255, 255, 0.9);
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background 0.4s, color 0.4s;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .controls {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .toggle-btn, .slideshow-btn {
+    background-color: var(--tab-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    margin: 0 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+  }
+
+  .toggle-btn:hover, .slideshow-btn:hover {
+    background-color: var(--tab-hover);
+  }
+
+  .tab-container {
+    display: flex;
+    justify-content: center;
+    background-color: var(--tab-bg);
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    padding: 14px 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: var(--tab-bg);
+    color: var(--text-color);
+    transition: 0.3s;
+    font-size: 16px;
+  }
+
+  .tab:hover {
+    background-color: var(--tab-hover);
+  }
+
+  .tab.active {
+    background-color: var(--accent);
+    color: #fff;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .gallery {
+    display: none;
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 0.4s ease-in;
+  }
+
+  .gallery.active {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--overlay-bg);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    flex-direction: column;
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #000;
+  }
+
+  .close-btn, .prev-btn, .next-btn, .lightbox-slideshow-btn {
+    position: absolute;
+    font-size: 28px;
+    color: var(--text-color);
+    background: rgba(0,0,0,0.4);
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .close-btn {
+    top: 5%;
+    right: 5%;
+    transform: none;
+    font-size: 26px;
+  }
+
+  .prev-btn { left: 5%; top: 50%; transform: translateY(-50%); }
+  .next-btn { right: 5%; top: 50%; transform: translateY(-50%); }
+
+  .lightbox-slideshow-btn {
+    bottom: 10%;
+    background: var(--accent);
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .close-btn:hover, .prev-btn:hover, .next-btn:hover, .lightbox-slideshow-btn:hover {
+    background: var(--accent);
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
+</head>
+<body>
+
+<h1>🖼️ Tab Image Gallery Pro+</h1>
+
+<div class="controls">
+  <button class="toggle-btn" onclick="toggleTheme()">🌙 Dark / ☀️ Light</button>
+  <button class="slideshow-btn" onclick="toggleSlideshow()">▶️ Start Tab Slideshow</button>
+</div>
+
+<div class="tab-container">
+  <button class="tab active" onclick="openGallery(event, 'nature')">Gasten</button>
+  <button class="tab" onclick="openGallery(event, 'cities')">Feest</button>
+  
+  <button class="tab" onclick="openGallery(event, 'animals')">Animals</button>
+</div>
+
+<!-- Galleries -->
+<div id="nature" class="gallery active">
+  <!-- <img src="https://picsum.photos/id/1018/800/500" alt="Nature 1">
+  <img src="https://picsum.photos/id/1015/800/500" alt="Nature 2">
+  <img src="https://picsum.photos/id/1016/800/500" alt="Nature 3">
+  <img src="https://picsum.photos/id/1020/800/500" alt="Nature 4"> -->
+
+  <img src="./utils/fotos/DSC02685.JPG" alt="">
+  <img src="./utils/fotos/DSC02686.JPG" alt="">
+  <img src="./utils/fotos/DSC02687.JPG" alt="">
+  <img src="./utils/fotos/DSC02688.JPG" alt="">
+  <img src="./utils/fotos/DSC02689.JPG" alt="">
+  <img src="./utils/fotos/DSC02690.JPG" alt="">
+  <img src="./utils/fotos/DSC02691.JPG" alt="">
+  <img src="./utils/fotos/DSC02692.JPG" alt="">
+  <img src="./utils/fotos/DSC02693.JPG" alt="">
+  <img src="./utils/fotos/DSC02694.JPG" alt="">
+  <img src="./utils/fotos/DSC02695.JPG" alt="">
+  <img src="./utils/fotos/DSC02696.JPG" alt="">
+  <img src="./utils/fotos/DSC02698.JPG" alt="">
+  <img src="./utils/fotos/DSC02699.JPG" alt="">
+  <img src="./utils/fotos/DSC02700.JPG" alt="">
+  <img src="./utils/fotos/DSC02701.JPG" alt="">
+  <img src="./utils/fotos/DSC02702.JPG" alt="">
+  <img src="./utils/fotos/DSC02703.JPG" alt="">
+  <img src="./utils/fotos/DSC02704.JPG" alt="">
+  <img src="./utils/fotos/DSC02705.JPG" alt="">
+  <img src="./utils/fotos/DSC02706.JPG" alt="">
+  <img src="./utils/fotos/DSC02707.JPG" alt="">
+  <img src="./utils/fotos/DSC02708.JPG" alt="">
+  <img src="./utils/fotos/DSC02709.JPG" alt="">
+  <img src="./utils/fotos/DSC02710.JPG" alt="">
+  <img src="./utils/fotos/DSC02711.JPG" alt="">
+  <img src="./utils/fotos/DSC02712.JPG" alt="">
+  <img src="./utils/fotos/DSC02713.JPG" alt="">
+  <img src="./utils/fotos/DSC02714.JPG" alt="">
+  <img src="./utils/fotos/DSC02715.JPG" alt="">
+
+</div>
+
+<div id="cities" class="gallery">
+  <!-- <img src="https://picsum.photos/id/1031/800/500" alt="City 1">
+  <img src="https://picsum.photos/id/1035/800/500" alt="City 2">
+  <img src="https://picsum.photos/id/1043/800/500" alt="City 3">
+  <img src="https://picsum.photos/id/1050/800/500" alt="City 4"> -->
+
+  <img src="./utils/fotos/DSC02716.JPG" alt="">
+  <img src="./utils/fotos/DSC02717.JPG" alt="">
+  <img src="./utils/fotos/DSC02718.JPG" alt="">
+  <img src="./utils/fotos/DSC02719.JPG" alt="">
+  <img src="./utils/fotos/DSC02720.JPG" alt="">
+  <img src="./utils/fotos/DSC02721.JPG" alt="">
+  <img src="./utils/fotos/DSC02722.JPG" alt="">
+  <img src="./utils/fotos/DSC02723.JPG" alt="">
+  <img src="./utils/fotos/DSC02724.JPG" alt="">
+  <img src="./utils/fotos/DSC02725.JPG" alt="">
+  <img src="./utils/fotos/DSC02726.JPG" alt="">
+  <img src="./utils/fotos/DSC02727.JPG" alt="">
+  <img src="./utils/fotos/DSC02728.JPG" alt="">
+  <img src="./utils/fotos/DSC02729.JPG" alt="">
+  <img src="./utils/fotos/DSC02730.JPG" alt="">
+  <img src="./utils/fotos/DSC02731.JPG" alt="">
+  <img src="./utils/fotos/DSC02732.JPG" alt="">
+  <img src="./utils/fotos/DSC02733.JPG" alt="">
+  <img src="./utils/fotos/DSC02734.JPG" alt="">
+  <img src="./utils/fotos/DSC02735.JPG" alt="">
+  <img src="./utils/fotos/DSC02735.JPG" alt="">
+  <img src="./utils/fotos/DSC02735.JPG" alt="">
+  <img src="./utils/fotos/DSC02736.JPG" alt="">
+  <img src="./utils/fotos/DSC02737.JPG" alt="">
+  <img src="./utils/fotos/DSC02738.JPG" alt="">
+  <img src="./utils/fotos/DSC02739.JPG" alt="">
+  <img src="./utils/fotos/DSC02740.JPG" alt="">
+  <img src="./utils/fotos/DSC02741.JPG" alt="">
+  <img src="./utils/fotos/DSC02742.JPG" alt="">
+  <img src="./utils/fotos/DSC02743.JPG" alt="">
+  <img src="./utils/fotos/DSC02744.JPG" alt="">
+  <img src="./utils/fotos/DSC02745.JPG" alt="">
+</div>
+
+
+<div id="animals" class="gallery">
+  <img src="https://picsum.photos/id/237/800/500" alt="Animal 1">
+  <img src="https://picsum.photos/id/433/800/500" alt="Animal 2">
+  <img src="https://picsum.photos/id/593/800/500" alt="Animal 3">
+  <img src="https://picsum.photos/id/659/800/500" alt="Animal 4">
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="close-btn" onclick="closeLightbox()">✖</button>
+  <button class="prev-btn" onclick="changeImage(-1)">❮</button>
+  <img id="lightbox-img" src="" alt="Lightbox">
+  <button class="next-btn" onclick="changeImage(1)">❯</button>
+  <button class="lightbox-slideshow-btn" onclick="toggleLightboxSlideshow()">▶️ Start Slideshow</button>
+</div>
+
+<script>
+let tabSlideshowInterval = null;
+let tabSlideshowRunning = false;
+let lightboxSlideshowInterval = null;
+let lightboxSlideshowRunning = false;
+let currentGallery = 'nature';
+let currentIndex = 0;
+
+// Tabs
+function openGallery(evt, galleryName) {
+  const galleries = document.querySelectorAll(".gallery");
+  const tabs = document.querySelectorAll(".tab");
+
+  galleries.forEach(g => g.classList.remove("active"));
+  tabs.forEach(t => t.classList.remove("active"));
+
+  document.getElementById(galleryName).classList.add("active");
+  evt.currentTarget.classList.add("active");
+  currentGallery = galleryName;
+}
+
+// Theme toggle
+function toggleTheme() {
+  document.body.classList.toggle("light");
+}
+
+// Slideshow tussen tabs
+function toggleSlideshow() {
+  const btn = document.querySelector(".slideshow-btn");
+  const tabs = document.querySelectorAll(".tab");
+  const tabArray = Array.from(tabs);
+
+  if (!tabSlideshowRunning) {
+    let index = tabArray.findIndex(t => t.classList.contains("active"));
+    tabSlideshowRunning = true;
+    btn.textContent = "⏸️ Stop Tab Slideshow";
+
+    tabSlideshowInterval = setInterval(() => {
+      index = (index + 1) % tabArray.length;
+      tabArray[index].click();
+    }, 3000);
+  } else {
+    tabSlideshowRunning = false;
+    btn.textContent = "▶️ Start Tab Slideshow";
+    clearInterval(tabSlideshowInterval);
+  }
+}
+
+// Lightbox
+function openLightbox(src, index) {
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+  img.src = src;
+  lightbox.classList.add("active");
+  currentIndex = index;
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("active");
+  stopLightboxSlideshow();
+}
+
+function changeImage(direction) {
+  const gallery = document.getElementById(currentGallery);
+  const images = gallery.querySelectorAll("img");
+  currentIndex = (currentIndex + direction + images.length) % images.length;
+  document.getElementById("lightbox-img").src = images[currentIndex].src;
+}
+
+// Lightbox slideshow
+function toggleLightboxSlideshow() {
+  const btn = document.querySelector(".lightbox-slideshow-btn");
+
+  if (!lightboxSlideshowRunning) {
+    lightboxSlideshowRunning = true;
+    btn.textContent = "⏸️ Stop Slideshow";
+    lightboxSlideshowInterval = setInterval(() => changeImage(1), 2500);
+  } else {
+    stopLightboxSlideshow();
+  }
+}
+
+function stopLightboxSlideshow() {
+  lightboxSlideshowRunning = false;
+  clearInterval(lightboxSlideshowInterval);
+  document.querySelector(".lightbox-slideshow-btn").textContent = "▶️ Start Slideshow";
+}
+
+// Klik op afbeelding → open lightbox
+document.querySelectorAll(".gallery img").forEach((img) => {
+  img.addEventListener("click", () => {
+    const gallery = img.closest(".gallery");
+    currentGallery = gallery.id;
+    const galleryImages = Array.from(gallery.querySelectorAll("img"));
+    openLightbox(img.src, galleryImages.indexOf(img));
+  });
+});
+
+// Toetsenbordbediening
+document.addEventListener("keydown", (e) => {
+  const lightbox = document.getElementById("lightbox");
+  if (!lightbox.classList.contains("active")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowRight") changeImage(1);
+  if (e.key === "ArrowLeft") changeImage(-1);
+});
+</script>
+
+</body>
+</html>
+
+
+
+
